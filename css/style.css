@@ -64,6 +64,10 @@ transition:0.3s;
 color:#ffb347;
 }
 
+.menu-toggle{
+display:none;
+}
+
 
 /* ===============================
 HERO SECTION
@@ -279,6 +283,13 @@ text-align:center;
 transition:0.3s;
 }
 
+.menu-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px; /* Added for better aesthetics */
+    margin-bottom: 10px; /* Added for spacing between image and text */
+}
+
 .menu-card:hover{
 background:#292929;
 transform:scale(1.05);
@@ -373,26 +384,75 @@ RESPONSIVE
 @media (max-width:768px){
 
 .navbar{
-flex-direction:column;
-gap:15px;
+flex-direction:row;
+justify-content:space-between;
+padding:20px;
 }
 
 .nav-links{
-flex-wrap:wrap;
-justify-content:center;
+display:none; /* HIDE FOR NOW, WILL IMPLEMENT A TOGGLE */
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:rgba(27,27,27,0.98);
+flex-direction:column;
+align-items:center;
+gap:20px;
+padding:20px 0;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.menu-toggle{
+display:block; /* SHOW HAMBURGER ICON */
+font-size:24px;
+cursor:pointer;
 }
 
 .hero h2{
 font-size:36px;
 }
 
-.cuisine-container{
+.hero p{
+font-size:16px;
+}
+
+.cuisine-container,
+.order-options{
 flex-direction:column;
 align-items:center;
 }
 
-.order-options{
-flex-direction:column;
+.menu-card{
+width:80%;
+}
+
+form{
+padding:20px;
+}
+
+}
+
+@media (max-width:480px){
+
+.hero h2{
+font-size:28px;
+}
+
+.hero p{
+font-size:14px;
+}
+
+.menu-card{
+width:90%;
+}
+
+.cart{
+margin:20px;
+padding:20px;
 }
 
 }.billing{
@@ -423,4 +483,45 @@ padding:10px 20px;
 border:none;
 background:#ffb347;
 cursor:pointer;
+}
+
+/* ===============================
+GALLERY
+=============================== */
+
+.gallery-section{
+padding:60px 20px;
+text-align:center;
+}
+
+.gallery-section h2{
+margin-bottom:30px;
+color:#ffb347;
+}
+
+.gallery-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.gallery-grid img{
+width:250px;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+transition:0.3s;
+cursor:pointer;
+}
+
+.gallery-grid img:hover{
+transform:scale(1.08);
+}
+
+@media (max-width: 768px) {
+    .gallery-grid img {
+        width: 100%;
+        height: auto;
+    }
 }

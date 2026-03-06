@@ -2,216 +2,97 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Menu | Ruchi Raagam</title>
-
-<style>
-
-body{
-background:#121212;
-color:white;
-font-family:Arial;
-margin:0;
-}
-
-/* NAVBAR */
-
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:#1b1b1b;
-}
-
-.logo{
-color:#ffb347;
-}
-
-.nav-links{
-display:flex;
-gap:25px;
-list-style:none;
-}
-
-.nav-links a{
-text-decoration:none;
-color:white;
-}
-
-.nav-links a:hover{
-color:#ffb347;
-}
-
-
-/* MENU SECTION */
-
-.menu-container{
-text-align:center;
-padding:40px;
-}
-
-.menu-container h2{
-margin-bottom:20px;
-color:#ffb347;
-}
-
-
-/* MENU BUTTONS */
-
-.menu-buttons button{
-margin:10px;
-padding:10px 20px;
-background:#ffb347;
-border:none;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold;
-transition:0.3s;
-}
-
-.menu-buttons button:hover{
-background:#ffa000;
-}
-
-
-/* GRID SAME AS GALLERY */
-
-#menuItems{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-margin-top:30px;
-}
-
-
-/* FOOD CARD */
-
-.menu-card{
-background:#1f1f1f;
-border-radius:10px;
-padding:10px;
-width:250px;
-text-align:center;
-transition:0.3s;
-}
-
-.menu-card:hover{
-transform:translateY(-5px);
-}
-
-
-/* IMAGE SAME AS GALLERY */
-
-.menu-card img{
-width:250px;
-height:180px;
-object-fit:cover;
-border-radius:10px;
-transition:0.3s;
-cursor:pointer;
-}
-
-.menu-card img:hover{
-transform:scale(1.05);
-}
-
-
-.menu-card h4{
-margin-top:10px;
-}
-
-.menu-card p{
-color:#ffb347;
-font-weight:bold;
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Ruchi Raagam</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
 
-<!-- NAVBAR -->
+    <!-- NAVBAR -->
 
-<nav class="navbar">
+    <nav class="navbar">
 
-<h1 class="logo">Ruchi Raagam</h1>
+        <div class="logo-container">
+            <img src="../images/logo/logo.png" alt="logo">
+            <h1 class="logo">Ruchi Raagam</h1>
+        </div>
 
-<ul class="nav-links">
+        <div class="menu-toggle" id="menuToggle">&#9776;</div>
 
-<li><a href="../index.html">Home</a></li>
-<li><a href="menu.html">Menu</a></li>
-<li><a href="booking.html">Table Booking</a></li>
-<li><a href="order.html">Order</a></li>
-<li><a href="gallery.html">Gallery</a></li>
-<li><a href="contact.html">Contact</a></li>
+        <ul class="nav-links" id="navLinks">
 
-</ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="booking.html">Table Booking</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
 
-</nav>
+        </ul>
 
-
-
-<!-- MENU SECTION -->
-
-<section class="menu-container">
-
-<h2>Our Menu</h2>
-
-<div class="menu-buttons">
-
-<button onclick="loadMenu('andhra','andhra')">Andhra</button>
-<button onclick="loadMenu('hyderabadi','hydbir')">Hyderabadi</button>
-<button onclick="loadMenu('chinese','chi')">Chinese</button>
-<button onclick="loadMenu('korean','korea')">Korean</button>
-<button onclick="loadMenu('japanese','jap')">Japanese</button>
-
-</div>
-
-<div id="menuItems"></div>
-
-</section>
+    </nav>
 
 
 
-<script>
+    <!-- MENU SECTION -->
 
-let menuData = {};
+    <section class="menu-container">
+
+        <h2>Our Menu</h2>
+
+        <div class="menu-buttons">
+
+            <button onclick="loadMenu('andhra','andhra')">Andhra</button>
+            <button onclick="loadMenu('hyderabadi','hydbir')">Hyderabadi</button>
+            <button onclick="loadMenu('chinese','chi')">Chinese</button>
+            <button onclick="loadMenu('korean','korea')">Korean</button>
+            <button onclick="loadMenu('japanese','jap')">Japanese</button>
+
+        </div>
+
+        <div id="menuItems"></div>
+
+    </section>
 
 
-/* LOAD MENU JSON */
 
-fetch("../data/menu.json")
-.then(res => res.json())
-.then(data => {
-
-menuData = data;
-
-});
+    <script>
+        let menuData = {};
 
 
-/* LOAD MENU */
+        /* LOAD MENU JSON */
 
-function loadMenu(type,folder){
+        fetch("../data/menu.json")
+            .then(res => res.json())
+            .then(data => {
 
-const menuDiv = document.getElementById("menuItems");
+                menuData = data;
+                // Load default menu
+                loadMenu('andhra', 'andhra');
 
-menuDiv.innerHTML = "";
+            });
 
-menuData[type].forEach((item,index)=>{
 
-let imgNumber = index + 1;
+        /* LOAD MENU */
 
-let card = document.createElement("div");
+        function loadMenu(type, folder) {
 
-card.className = "menu-card";
+            const menuDiv = document.getElementById("menuItems");
 
-card.innerHTML = `
+            menuDiv.innerHTML = "";
+
+            menuData[type].forEach((item, index) => {
+
+                let imgNumber = index + 1;
+
+                let card = document.createElement("div");
+
+                card.className = "menu-card";
+
+                card.innerHTML = `
 
 <img src="../images/${folder}/i${imgNumber}.jpeg">
 
@@ -221,14 +102,21 @@ card.innerHTML = `
 
 `;
 
-menuDiv.appendChild(card);
+                menuDiv.appendChild(card);
 
-});
+            });
 
-}
+        }
 
-</script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 
 
 </body>
+
 </html>

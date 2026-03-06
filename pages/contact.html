@@ -15,152 +15,163 @@
 <body>
 
 
-<!-- NAVBAR -->
+    <!-- NAVBAR -->
 
-<nav class="navbar">
+    <nav class="navbar">
 
-<h1 class="logo">Ruchi Raagam</h1>
+        <div class="logo-container">
+            <img src="../images/logo/logo.png" alt="logo">
+            <h1 class="logo">Ruchi Raagam</h1>
+        </div>
 
-<ul class="nav-links">
+        <div class="menu-toggle" id="menuToggle">&#9776;</div>
 
-<li><a href="../index.html">Home</a></li>
-<li><a href="menu.html">Menu</a></li>
-<li><a href="booking.html">Table Booking</a></li>
-<li><a href="order.html">Order</a></li>
-<li><a href="gallery.html">Gallery</a></li>
-<li><a href="contact.html">Contact</a></li>
+        <ul class="nav-links" id="navLinks">
 
-</ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="booking.html">Table Booking</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
 
-</nav>
+        </ul>
 
-
-
-<!-- CONTACT HEADER -->
-
-<section class="about">
-
-<h2>Contact Ruchi Raagam</h2>
-
-<p>
-Have questions or want to book a special event?  
-Reach out to us and we’ll be happy to help.
-</p>
-
-</section>
+    </nav>
 
 
 
-<!-- CONTACT FORM -->
+    <!-- CONTACT HEADER -->
 
-<section>
+    <section class="about">
 
-<form onsubmit="event.preventDefault(); sendMessage();">
+        <h2>Contact Ruchi Raagam</h2>
 
-<label>Your Name</label>
-<input type="text" id="contactName" placeholder="Enter your name">
+        <p>
+            Have questions or want to book a special event?
+            Reach out to us and we’ll be happy to help.
+        </p>
 
-<label>Phone Number</label>
-<input type="tel" id="contactPhone" placeholder="Enter phone number">
-
-<label>Email</label>
-<input type="email" id="contactEmail" placeholder="Enter email">
-
-<label>Message</label>
-<input type="text" id="contactMessage" placeholder="Write your message">
-
-<button type="submit">Send Message</button>
-
-</form>
-
-</section>
+    </section>
 
 
 
-<!-- RESTAURANT DETAILS -->
+    <!-- CONTACT FORM -->
 
-<section class="about">
+    <section>
 
-<h2>Restaurant Information</h2>
+        <form onsubmit="event.preventDefault(); sendMessage();">
 
-<p>
+            <label>Your Name</label>
+            <input type="text" id="contactName" placeholder="Enter your name">
 
-📍 Location: Visakhapatnam, Andhra Pradesh  
-<br><br>
+            <label>Phone Number</label>
+            <input type="tel" id="contactPhone" placeholder="Enter phone number">
 
-📞 Phone: +91 9876543210  
-<br><br>
+            <label>Email</label>
+            <input type="email" id="contactEmail" placeholder="Enter email">
 
-📧 Email: ruchiRaagam@gmail.com  
-<br><br>
+            <label>Message</label>
+            <input type="text" id="contactMessage" placeholder="Write your message">
 
-🕒 Opening Hours  
-<br>
-Lunch: 12:00 PM – 3:30 PM  
-<br>
-Dinner: 7:00 PM – 11:00 PM
+            <button type="submit">Send Message</button>
 
-</p>
+        </form>
 
-</section>
+    </section>
 
 
 
-<!-- GOOGLE MAP -->
+    <!-- RESTAURANT DETAILS -->
 
-<section class="menu-container">
+    <section class="about">
 
-<h2>Find Us</h2>
+        <h2>Restaurant Information</h2>
 
-<iframe
-width="100%"
-height="400"
-style="border:0"
-loading="lazy"
-allowfullscreen
-src="https://maps.google.com/maps?q=Visakha%20Institute%20of%20Engineering%20and%20Technology%20Visakhapatnam&output=embed">
-</iframe>
+        <p>
 
-</section>
+            📍 Location: Visakhapatnam, Andhra Pradesh
+            <br><br>
 
+            📞 Phone: +91 9876543210
+            <br><br>
 
+            📧 Email: ruchiRaagam@gmail.com
+            <br><br>
 
-<!-- FOOTER -->
+            🕒 Opening Hours
+            <br>
+            Lunch: 12:00 PM – 3:30 PM
+            <br>
+            Dinner: 7:00 PM – 11:00 PM
 
-<footer>
+        </p>
 
-<p>Ruchi Raagam Restaurant | Visakhapatnam</p>
-<p>© 2026 All Rights Reserved</p>
-
-</footer>
-
+    </section>
 
 
-<script src="../js/script.js"></script>
 
-<script>
+    <!-- GOOGLE MAP -->
 
-function sendMessage(){
+    <section class="menu-container">
 
-let name = document.getElementById("contactName").value;
-let phone = document.getElementById("contactPhone").value;
-let email = document.getElementById("contactEmail").value;
-let message = document.getElementById("contactMessage").value;
+        <h2>Find Us</h2>
 
-if(name === "" || phone === "" || email === "" || message === ""){
+        <iframe
+                width="100%"
+                height="400"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen
+                src="https://maps.google.com/maps?q=Visakha%20Institute%20of%20Engineering%20and%20Technology%20Visakhapatnam&output=embed">
+        </iframe>
 
-alert("Please fill all fields");
+    </section>
 
-return;
 
-}
 
-alert("Thank you " + name + "! Your message has been sent.");
+    <!-- FOOTER -->
 
-}
+    <footer>
 
-</script>
+        <p>Ruchi Raagam Restaurant | Visakhapatnam</p>
+        <p>© 2026 All Rights Reserved</p>
+
+    </footer>
+
+
+
+    <script src="../js/script.js"></script>
+
+    <script>
+        function sendMessage() {
+
+            let name = document.getElementById("contactName").value;
+            let phone = document.getElementById("contactPhone").value;
+            let email = document.getElementById("contactEmail").value;
+            let message = document.getElementById("contactMessage").value;
+
+            if (name === "" || phone === "" || email === "" || message === "") {
+
+                alert("Please fill all fields");
+
+                return;
+
+            }
+
+            alert("Thank you " + name + "! Your message has been sent.");
+
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 
 
 </body>
+
 </html>
