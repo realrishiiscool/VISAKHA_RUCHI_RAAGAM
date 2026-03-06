@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us | Ruchi Raagam</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<h1 class="logo">Ruchi Raagam</h1>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="booking.html">Table Booking</a></li>
+<li><a href="order.html">Order</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+
+<!-- CONTACT HEADER -->
+
+<section class="about">
+
+<h2>Contact Ruchi Raagam</h2>
+
+<p>
+Have questions or want to book a special event?  
+Reach out to us and we’ll be happy to help.
+</p>
+
+</section>
+
+
+
+<!-- CONTACT FORM -->
+
+<section>
+
+<form onsubmit="event.preventDefault(); sendMessage();">
+
+<label>Your Name</label>
+<input type="text" id="contactName" placeholder="Enter your name">
+
+<label>Phone Number</label>
+<input type="tel" id="contactPhone" placeholder="Enter phone number">
+
+<label>Email</label>
+<input type="email" id="contactEmail" placeholder="Enter email">
+
+<label>Message</label>
+<input type="text" id="contactMessage" placeholder="Write your message">
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</section>
+
+
+
+<!-- RESTAURANT DETAILS -->
+
+<section class="about">
+
+<h2>Restaurant Information</h2>
+
+<p>
+
+📍 Location: Visakhapatnam, Andhra Pradesh  
+<br><br>
+
+📞 Phone: +91 9876543210  
+<br><br>
+
+📧 Email: ruchiRaagam@gmail.com  
+<br><br>
+
+🕒 Opening Hours  
+<br>
+Lunch: 12:00 PM – 3:30 PM  
+<br>
+Dinner: 7:00 PM – 11:00 PM
+
+</p>
+
+</section>
+
+
+
+<!-- GOOGLE MAP -->
+
+<section class="menu-container">
+
+<h2>Find Us</h2>
+
+<iframe
+width="100%"
+height="400"
+style="border:0"
+loading="lazy"
+allowfullscreen
+src="https://maps.google.com/maps?q=Visakha%20Institute%20of%20Engineering%20and%20Technology%20Visakhapatnam&output=embed">
+</iframe>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>Ruchi Raagam Restaurant | Visakhapatnam</p>
+<p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+
+
+<script src="../js/script.js"></script>
+
+<script>
+
+function sendMessage(){
+
+let name = document.getElementById("contactName").value;
+let phone = document.getElementById("contactPhone").value;
+let email = document.getElementById("contactEmail").value;
+let message = document.getElementById("contactMessage").value;
+
+if(name === "" || phone === "" || email === "" || message === ""){
+
+alert("Please fill all fields");
+
+return;
+
+}
+
+alert("Thank you " + name + "! Your message has been sent.");
+
+}
+
+</script>
+
+
+</body>
+</html>

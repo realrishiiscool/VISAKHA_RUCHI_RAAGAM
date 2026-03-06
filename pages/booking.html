@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Table Booking | Ruchi Raagam</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<h1 class="logo">Ruchi Raagam</h1>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="booking.html">Table Booking</a></li>
+<li><a href="order.html">Order</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+
+<!-- BOOKING SECTION -->
+
+<section class="about">
+
+<h2>Reserve Your Table</h2>
+
+<p>
+Enjoy a comfortable dining experience at Ruchi Raagam.  
+Book your table in advance to avoid waiting.
+</p>
+
+</section>
+
+
+
+<!-- BOOKING FORM -->
+
+<section>
+
+<form onsubmit="event.preventDefault(); bookTable();">
+
+
+<label>Name</label>
+<input type="text" id="bname" placeholder="Enter your name">
+
+
+<label>Phone Number</label>
+<input type="tel" id="bphone" placeholder="Enter phone number">
+
+
+<label>Number of People</label>
+<select id="people">
+
+<option value="">Select</option>
+<option value="1">1 Person</option>
+<option value="2">2 People</option>
+<option value="3">3 People</option>
+<option value="4">4 People</option>
+<option value="5">5 People</option>
+<option value="6">6+ People</option>
+
+</select>
+
+
+<label>Date</label>
+<input type="date" id="date">
+
+
+<label>Time</label>
+<input type="time" id="time">
+
+
+<button type="submit">Book Table</button>
+
+</form>
+
+</section>
+
+
+
+<!-- RESTAURANT INFO -->
+
+<section class="about">
+
+<h2>Dining Timings</h2>
+
+<p>
+
+Lunch : 12:00 PM – 3:30 PM  
+<br>
+Dinner : 7:00 PM – 11:00 PM
+
+</p>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>Ruchi Raagam Restaurant | Visakhapatnam</p>
+<p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

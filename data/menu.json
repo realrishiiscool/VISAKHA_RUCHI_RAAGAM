@@ -1,0 +1,34 @@
+{
+  "andhra":[
+    {"name":"Andhra Chicken Curry","price":250},
+    {"name":"Gongura Mutton","price":320},
+    {"name":"Pappu Rice","price":120},
+    {"name":"Andhra Biryani","price":260}
+  ],
+
+  "hyderabadi":[
+    {"name":"Hyderabadi Chicken Biryani","price":280},
+    {"name":"Mutton Biryani","price":320},
+    {"name":"Haleem (Halal)","price":200},
+    {"name":"Double Ka Meetha","price":150}
+  ],
+
+  "chinese":[
+    {"name":"Veg Manchurian","price":180},
+    {"name":"Hakka Noodles","price":170},
+    {"name":"Fried Rice","price":160},
+    {"name":"Chilli Chicken","price":220}
+  ],
+
+  "korean":[
+    {"name":"Bibimbap","price":300},
+    {"name":"Korean BBQ Chicken","price":350},
+    {"name":"Kimchi Rice","price":260}
+  ],
+
+  "japanese":[
+    {"name":"Sushi Roll","price":400},
+    {"name":"Ramen Bowl","price":320},
+    {"name":"Tempura","price":350}
+  ]
+}

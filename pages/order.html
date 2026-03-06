@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order Food | Ruchi Raagam</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#111;
+color:white;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:#1b1b1b;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+}
+
+.nav-links a:hover{
+color:#ffb347;
+}
+
+/* MENU */
+
+.menu-container{
+padding:40px;
+text-align:center;
+}
+
+.menu-buttons button{
+margin:10px;
+padding:10px 20px;
+border:none;
+background:#ffb347;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* MENU CARDS */
+
+#menuItems{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+margin-top:20px;
+}
+
+.menu-card{
+background:#1f1f1f;
+padding:20px;
+width:220px;
+border-radius:10px;
+}
+
+/* COUNTER */
+
+.counter{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+margin-top:10px;
+}
+
+.counter button{
+width:35px;
+height:35px;
+border:none;
+background:#ffb347;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.counter span{
+font-size:18px;
+min-width:20px;
+}
+
+/* CART */
+
+.cart{
+background:#1b1b1b;
+margin:40px;
+padding:30px;
+border-radius:10px;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+.popup-box{
+background:#222;
+padding:30px;
+border-radius:10px;
+text-align:center;
+}
+
+.popup-box img{
+width:200px;
+margin:15px 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<h1 class="logo">Ruchi Raagam</h1>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="booking.html">Table Booking</a></li>
+<li><a href="order.html">Order</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+
+<!-- ORDER TYPE -->
+
+<section class="menu-container">
+
+<h2>Choose Order Type</h2>
+
+<div class="menu-buttons">
+
+<button onclick="selectOrderType('delivery')">Home Delivery</button>
+<button onclick="selectOrderType('takeaway')">Takeaway</button>
+<button onclick="selectOrderType('dinein')">Dine-In</button>
+
+</div>
+
+</section>
+
+
+
+<!-- DELIVERY DETAILS -->
+
+<section id="deliverySection" style="display:none">
+
+<div style="max-width:400px;margin:auto">
+
+<input type="text" placeholder="Name" style="width:100%;padding:10px;margin:5px">
+<input type="text" placeholder="Phone" style="width:100%;padding:10px;margin:5px">
+<input type="text" placeholder="Address" style="width:100%;padding:10px;margin:5px">
+
+</div>
+
+</section>
+
+
+
+<!-- MENU -->
+
+<section class="menu-container">
+
+<h2>Select Food</h2>
+
+<div class="menu-buttons">
+
+<button onclick="loadMenu('andhra')">Andhra</button>
+<button onclick="loadMenu('hyderabadi')">Hyderabadi</button>
+<button onclick="loadMenu('chinese')">Chinese</button>
+<button onclick="loadMenu('korean')">Korean</button>
+<button onclick="loadMenu('japanese')">Japanese</button>
+
+</div>
+
+<div id="menuItems"></div>
+
+</section>
+
+
+
+<!-- CART -->
+
+<section class="cart">
+
+<h3>Your Order</h3>
+
+<ul id="cartItems"></ul>
+
+<p id="total">Total: ₹0</p>
+
+<button onclick="placeOrder()">Place Order</button>
+
+</section>
+
+
+
+<!-- BILL POPUP -->
+
+<div id="billPopup" class="popup">
+
+<div class="popup-box">
+
+<h3>Ruchi Raagam Bill</h3>
+
+<p id="billDetails"></p>
+
+<img id="qrImage">
+
+<br>
+
+<button onclick="confirmPayment()">Payment Done</button>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* MENU DATA */
+
+const menuData = {
+
+andhra:[
+{name:"Andhra Chicken Curry",price:250},
+{name:"Gongura Mutton",price:320},
+{name:"Pappu Rice",price:120},
+{name:"Andhra Biryani",price:260}
+],
+
+hyderabadi:[
+{name:"Hyderabadi Chicken Biryani",price:280},
+{name:"Mutton Biryani",price:320},
+{name:"Haleem",price:200},
+{name:"Double Ka Meetha",price:150}
+],
+
+chinese:[
+{name:"Veg Manchurian",price:180},
+{name:"Hakka Noodles",price:170},
+{name:"Fried Rice",price:160},
+{name:"Chilli Chicken",price:220}
+],
+
+korean:[
+{name:"Bibimbap",price:300},
+{name:"Korean BBQ Chicken",price:350},
+{name:"Kimchi Rice",price:260}
+],
+
+japanese:[
+{name:"Sushi Roll",price:400},
+{name:"Ramen Bowl",price:320},
+{name:"Tempura",price:350}
+]
+
+};
+
+
+let cart = {};
+let subtotal = 0;
+
+
+/* ORDER TYPE */
+
+function selectOrderType(type){
+
+let deliverySection=document.getElementById("deliverySection");
+
+if(type==="delivery"){
+deliverySection.style.display="block";
+}
+else if(type==="takeaway"){
+deliverySection.style.display="none";
+}
+else{
+alert("Please book table for dine in");
+}
+
+}
+
+
+/* LOAD MENU */
+
+function loadMenu(type){
+
+let menuDiv=document.getElementById("menuItems");
+
+menuDiv.innerHTML="";
+
+menuData[type].forEach(item=>{
+
+let id=item.name.replace(/\s/g,'');
+
+let card=document.createElement("div");
+
+card.className="menu-card";
+
+card.innerHTML=`
+
+<h4>${item.name}</h4>
+
+<p>₹${item.price}</p>
+
+<div class="counter">
+
+<button onclick="decrease('${item.name}',${item.price})">−</button>
+
+<span id="${id}qty">0</span>
+
+<button onclick="increase('${item.name}',${item.price})">+</button>
+
+</div>
+
+`;
+
+menuDiv.appendChild(card);
+
+});
+
+}
+
+
+/* INCREASE */
+
+function increase(name,price){
+
+let id=name.replace(/\s/g,'');
+
+if(!cart[name]){
+
+cart[name]={price:price,qty:0};
+
+}
+
+cart[name].qty++;
+
+subtotal+=price;
+
+document.getElementById(id+"qty").innerText=cart[name].qty;
+
+updateCart();
+
+}
+
+
+/* DECREASE */
+
+function decrease(name,price){
+
+let id=name.replace(/\s/g,'');
+
+if(cart[name] && cart[name].qty>0){
+
+cart[name].qty--;
+
+subtotal-=price;
+
+if(cart[name].qty===0){
+delete cart[name];
+}
+
+document.getElementById(id+"qty").innerText=cart[name]?cart[name].qty:0;
+
+updateCart();
+
+}
+
+}
+
+
+/* UPDATE CART */
+
+function updateCart(){
+
+let cartList=document.getElementById("cartItems");
+
+cartList.innerHTML="";
+
+for(let item in cart){
+
+let li=document.createElement("li");
+
+li.innerText=item+" x "+cart[item].qty+" = ₹"+(cart[item].qty*cart[item].price);
+
+cartList.appendChild(li);
+
+}
+
+document.getElementById("total").innerText="Total: ₹"+subtotal;
+
+}
+
+
+/* PLACE ORDER */
+
+function placeOrder(){
+
+if(subtotal===0){
+
+alert("Cart empty");
+
+return;
+
+}
+
+let gst=subtotal*0.05;
+
+let total=subtotal+gst;
+
+/* BILL */
+
+document.getElementById("billDetails").innerHTML=
+
+`Subtotal: ₹${subtotal}<br>
+GST (5%): ₹${gst.toFixed(2)}<br>
+<b>Total: ₹${total.toFixed(2)}</b>`;
+
+
+/* QR */
+
+document.getElementById("qrImage").src=
+
+`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Pay ₹${total} to Ruchi Raagam`;
+
+
+/* SHOW POPUP */
+
+document.getElementById("billPopup").style.display="flex";
+
+}
+
+
+/* CONFIRM PAYMENT */
+
+function confirmPayment(){
+
+alert("Payment Successful 🎉 Order Confirmed!");
+
+location.reload();
+
+}
+
+</script>
+
+
+</body>
+</html>
